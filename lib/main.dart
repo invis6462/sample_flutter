@@ -4,18 +4,6 @@ void main() {
   runApp(const MyApp());
 }
 
-class Example {
-  int temp;
-
-  Example(this.temp);
-  
-  @override
-  String toString() {
-    // TODO: implement toString
-    return temp.toString();
-  }
-}
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
