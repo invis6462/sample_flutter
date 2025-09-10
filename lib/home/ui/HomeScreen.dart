@@ -1,11 +1,12 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'HomeScreenState.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget  {
   const HomeScreen({super.key, required this.title});
 
   final String title;
 
   @override
-  State<HomeScreen> createState() => HomeScreenState();
+  ConsumerState<HomeScreen> createState() => HomeScreenState();
 }
