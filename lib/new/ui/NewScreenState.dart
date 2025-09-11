@@ -7,21 +7,10 @@ import 'NewScreen.dart';
 class NewScreenState extends ConsumerState<NewScreen> {
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(newScreenIntentProvider);
-    final intent = ref.read(newScreenIntentProvider.notifier);
-
-    if(state.isBackNavigation) onBack();
-
     return Scaffold(
       appBar: AppBar(
         title: Text(NewScreen.title),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: intent.onBack,
-            icon: Icon(Icons.navigate_before),
-          ),
-        ],
       ),
       body: Center(
         child: Padding(
@@ -38,9 +27,5 @@ class NewScreenState extends ConsumerState<NewScreen> {
         ),
       ),
     );
-  }
-
-  void onBack(){
-    Navigator.pop(context);
   }
 }

@@ -11,7 +11,12 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
     final state = ref.watch(homeIntentProvider);
     final intent = ref.read(homeIntentProvider.notifier);
 
-    if(state.navigateTo != null) navigate(state.navigateTo!);
+    if (state.navigateTo != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        navigate(state.navigateTo!);
+        intent.clearNavigation();
+      });
+    }
 
     return Scaffold(
       appBar: AppBar(title: Text(HomeScreen.title)),

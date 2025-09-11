@@ -28,4 +28,8 @@ class HomeIntent extends Notifier<HomeState> {
   void navigateToNewScreen() {
     state = state.copyWith(navigateTo: RouteEnum.newScreen);
   }
+
+  void clearNavigation() {
+    state = state.copyWith(navigateTo: null);
+  }
 }
