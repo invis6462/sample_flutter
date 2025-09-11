@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'HomeScreenState.dart';
 
 class HomeScreen extends ConsumerStatefulWidget  {
-  const HomeScreen({super.key, required this.title});
+  const HomeScreen({super.key});
 
-  final String title;
+  static const title = "Flutter Demo";
 
   @override
   ConsumerState<HomeScreen> createState() => HomeScreenState();

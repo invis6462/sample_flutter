@@ -1,10 +1,10 @@
 class HomeState{
 
-  final int counter;
+  final String joke;
 
-  const HomeState({this.counter = 0});
+  const HomeState({this.joke = ""});
 
-  HomeState copyWith({int? counter}) {
-    return HomeState(counter: counter ?? this.counter);
+  HomeState copyWith({String? joke}) {
+    return HomeState(joke: joke ?? this.joke);
   }
 }
