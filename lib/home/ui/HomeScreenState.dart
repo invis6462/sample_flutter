@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sample_app/home/di/HomeDi.dart';
 
+import '../../di/MainDi.dart';
+import '../../navigation/RouteEnum.dart';
 import 'HomeScreen.dart';
 
 class HomeScreenState extends ConsumerState<HomeScreen> {
@@ -9,6 +10,8 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(homeIntentProvider);
     final intent = ref.read(homeIntentProvider.notifier);
+
+    if(state.navigateTo != null) navigate(state.navigateTo!);
 
     return Scaffold(
       appBar: AppBar(title: Text(HomeScreen.title)),
@@ -19,15 +22,13 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                '${state.joke}',
+                state.joke,
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
               TextButton(
-                  onPressed: intent.navigate,
-                  child: Text(
-                    "Next"
-                  ),
-              )
+                onPressed: intent.navigateToNewScreen,
+                child: Text("Next"),
+              ),
             ],
           ),
         ),
@@ -37,5 +38,9 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
         child: const Icon(Icons.add),
       ),
     );
+  }
+
+  void navigate(RouteEnum route) {
+    Navigator.pushNamed(context, route.path);
   }
 }

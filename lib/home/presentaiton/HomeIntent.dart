@@ -1,6 +1,7 @@
 import 'package:sample_app/home/data/api/HomeApi.dart';
 
-import '../di/HomeDi.dart';
+import '../../di/MainDi.dart';
+import '../../navigation/RouteEnum.dart';
 import 'HomeState.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -24,6 +25,7 @@ class HomeIntent extends Notifier<HomeState> {
     return "${joke.setup}\n${joke.punchline}";
   }
 
-  void navigate() {
+  void navigateToNewScreen() {
+    state = state.copyWith(navigateTo: RouteEnum.newScreen);
   }
 }
